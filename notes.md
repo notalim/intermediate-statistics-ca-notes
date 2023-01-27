@@ -1,4 +1,4 @@
-# Intermediate Statistics CA Notes
+# Intermediate Statistics CA RStudio Notes
 
 > **Welcome to MA 331 Spring 2023!**
 
