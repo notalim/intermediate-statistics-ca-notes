@@ -2,7 +2,7 @@
 
 > **Welcome to MA 331 Spring 2023!**
 
-> These notes are meant to help you succeed in this course. These will include necessary tips for _R_ formulas you will need throughout this course. Feel free to give feedback on these via [email](akassymo@stevens.edu).
+> These notes are meant to help you succeed in this course. These will include necessary tips for _R_ formulas you will need throughout this course. Feel free to give feedback on these via [email](akassymo@stevens.edu): akassymo@stevens.edu.
 
 > **These notes are not meant to replace the slides.** For more info, please refer to the slides.
 
@@ -10,7 +10,7 @@
 
 ## Lecture 1
 
-R formulas are **very** similar to Python. If you ever used _pandas_ or _scipy_, you will easily get into _R Studio_.
+R formulas are **very** similar to Python. If you ever used _pandas_ or _scipy_, you will easily get into _RStudio_.
 
 create a variable: `x = ...`
 
@@ -53,7 +53,7 @@ normal QQ plot: `qqnorm(x)`
 
 detrended QQ plot: `qqline(x)`
 
-> **Tip**: you can always see the history of your console in the upper right corner, so if you ever need to remember a command you used last time you opened _R Studio_, you can always see it there.
+> **Tip**: you can always see the history of your console in the upper right corner, so if you ever need to remember a command you used last time you opened _RStudio_, you can always see it there.
 
 ## Lecture 2
 
@@ -119,7 +119,7 @@ cdf of an F-distribution:
 
 quantile of an F-distribution: `qf(q, df1, df2)`
 
-> At this point, you might be really overwhelmed with the amount of theory. _I understand how you might feel_, but later all of these will start making sense. Each one of these distributions has a use, and you will be introduced to them shortly.
+> At this point, you might be really overwhelmed with the amount of theory. **I understand how you might feel**, but later all of these will start making sense. Each one of these distributions has a use, and you will be introduced to them shortly.
 
 ## Lecture 3
 
