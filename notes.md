@@ -12,6 +12,17 @@
 
 R formulas are **very** similar to Python. If you ever used _pandas_ or _scipy_, you will easily get into _RStudio_.
 
+To separate code blocks from text, you need to type:
+
+    ```{r}
+
+    *code here*
+
+    ```
+You have to close the code block if you want to have normal text after. 
+
+#### Some useful R formulas
+
 create a variable: `x = ...`
 
 > **Tip**: if you want to see what is stored in your variable, just type its name.
