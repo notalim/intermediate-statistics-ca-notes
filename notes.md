@@ -2,7 +2,7 @@
 
 > **Welcome to MA 331 Spring 2023!**
 
-> These notes are meant to help you succeed in this course. These will include necessary tips for _R_ formulas you will need throughout this course. Feel free to give feedback on these via [email](akassymo@stevens.edu): akassymo@stevens.edu.
+> These notes are meant to help you succeed in this course. These will include necessary tips for _R_ formulas you will need throughout this course. Feel free to give feedback on these via [email](akassymo@stevens.edu): akassymo@stevens.edu,  [email](aleather@stevens.edu): aleather@stevens.edu.
 
 > **These notes are not meant to replace the slides.** For more info, please refer to the slides.
 
