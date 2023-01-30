@@ -205,3 +205,15 @@ $H_a$ is the alternative hypothesis and contradicts the null hypothesis.
 The goal of a hypothesis test to either reject or fail to reject the null hypothesis given a sample of the population.  To come to a conclusion about the null hypothesis, we must compare the *p-value* $p$ of the sample with the significance level $\alpha$ of the test.
 
 The *p value* of a sample is the probability that you obtain a sample that is at least as extreme as the one obtained.
+
+When $p < \alpha$, we **reject** the null hypothesis in favor of the alternative hypothesis.
+
+When $p > \alpha$, we **fail to reject** the null hypothesis.
+
+The alternative hypothesis can either be **two-tailed** $\mu \neq \mu_0$, **left-tailed** $\mu < \mu_0$, or **right-tailed** $\mu > \mu_0$.
+
+### Hypothesis test of a population mean with known $\sigma$
+
+When we wish to conduct of a hypothesis test of a population mean when population standard deviation is known, we will use a z-test.
+
+1.
