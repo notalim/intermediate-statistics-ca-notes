@@ -260,5 +260,9 @@ When we want to test for a difference of two population means, we can conduct a 
 When conducting a hypothesis about a population of a proportion, we use a z-test.
 
 1. We first need a binary sample `x` where "1" indicates a success and "0" indicates a failue (refer to Population proportion intervals in Lecture 3 on how to convert a data set to binary)
-2. We must also know the assumed population proportion $p$, the side of the test `side`, and the confidence level `1-alpha`
-3. To run the test in R, we can use the funciton `prop.test=(sum(x), length(x)`
+2. We must also know the assumed population proportion `p0`, the side of the test `side`, and the confidence level `1-alpha`
+3. To run the test in R, we can use the funciton `prop.test=(sum(x), length(x), p=p0, alternative = c("side"), conf.level=1-alpha)`
+
+    a. For the side of the test `side`, use `"two.sided"` for two-sided tests, `"less"` for left-tailed tests, and `"greater"` for right-tailed tests.
+   
+    b. If you do not enter a confidence level for the t-test, R will default to a confidence level of 95%.
