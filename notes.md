@@ -242,7 +242,9 @@ When we wish to conduct a hypothesis test of a population mean, but we do not kn
 
 ### Hypothesis test of the difference of two population means
 
-When we want to test for a difference of two population means, we can conduct a two sample paired t-test.
+When we want to test for a difference of two population means within the same test subjects, we can conduct a two sample paired t-test.
+
+> The difference between a paired t-test and unpaired t-test is that a paired t-test involves the same test subjects while the test subjects in an unpaired t-test are unrelated
 
 1. We first need our two samples `x` and `y`, the side of the test `side`, and the confidence level of the test `1 - alpha`
 2. We can use the R function `t.test(x, y, alternative = c("side"), paired = TRUE, conf.level = 1 - alpha`
