@@ -2,7 +2,7 @@
 
 > **Welcome to MA 331 Spring 2023!**
 
-> These notes are meant to help you succeed in this course. These will include necessary tips for _R_ formulas you will need throughout this course. Feel free to give feedback on these via [email](akassymo@stevens.edu): akassymo@stevens.edu,  [email](aleather@stevens.edu): aleather@stevens.edu.
+> These notes are meant to help you succeed in this course. These will include necessary tips for _R_ formulas you will need throughout this course. Feel free to give feedback on these via our emails: akassymo@stevens.edu, aleather@stevens.edu.
 
 > **These notes are not meant to replace the slides.** For more info, please refer to the slides.
 
@@ -217,22 +217,22 @@ The alternative hypothesis can either be **two-tailed** $\mu \neq \mu_0$, **left
 When we wish to conduct a hypothesis test of a population mean when population standard deviation is known, we will use a z-test.
 
 1. First, we must identify the assumed mean of the population `mu`, mean on the sample `xbar`, sample size `n`, and population standard deviation `sd`.
-2. Now we calculate the z-score of the sample using the formula `z = sqrt(n)*(xbar-mu)/sigma`.
+2. Now we calculate the z-score of the sample using the formula `z = sqrt(n) * (xbar - mu) / sigma`.
 3. Then we calculate the p-value of the sample based on the z-score.
 
-    a. for two-sided tests, we can use `p = 2*pnorm(-abs(z))`.
+    a. for two-sided tests, we can use `p = 2 * pnorm( -abs(z))`.
     
     b. for left-tailed tests, we can use `p = pnorm(z)`.
     
-    c. for right-tailed tests, we can use `p = 1-pnorm(z)`.
+    c. for right-tailed tests, we can use `p = 1 - pnorm(z)`.
 4.  Lastly, compare $p$ to $\alpha$ and write a proper conclusion.
 
 ### Hypothesis test of a population mean with unknown $\sigma$
 
 When we wish to conduct a hypothesis test of a population mean, but we do not know the population standard deviation, we must use a one sample t-test.
 
-1. We first must have our sample `x`, the side of the test (two-sided, right-tailed, or left-tailed) `side`, the assumed population mean `mu0`, and the confidence level of the test `1-alpha`
-2. To conduct a one sample t test in we can use the function `t.test(x, alternative = c("side"), mu = mu0, conf.level = 1-alpha`
+1. We first must have our sample `x`, the side of the test (two-sided, right-tailed, or left-tailed) `side`, the assumed population mean `mu0`, and the confidence level of the test `1 - alpha`
+2. To conduct a one sample t test in we can use the function `t.test(x, alternative = c("side"), mu = mu0, conf.level = 1 - alpha`
 
     a. For the side of the test `side`, use `"two.sided"` for two-sided tests, `"less"` for left-tailed tests, and `"greater"` for right-tailed tests.
     
@@ -244,8 +244,8 @@ When we wish to conduct a hypothesis test of a population mean, but we do not kn
 
 When we want to test for a difference of two population means, we can conduct a two sample paired t-test.
 
-1. We first need our two samples `x` and `y`, the side of the test `side`, and the confidence level of the test `1-alpha`
-2. We can use the R function `t.test(x, y, alternative = c("side"), paired = TRUE, conf.level = 1-alpha`
+1. We first need our two samples `x` and `y`, the side of the test `side`, and the confidence level of the test `1 - alpha`
+2. We can use the R function `t.test(x, y, alternative = c("side"), paired = TRUE, conf.level = 1 - alpha`
 
    a. We do not need to enter a mean for the difference between the population means, since under the null hypothesis, we assume there is no difference between the means $H_0: \mu_x - \mu_y = 0$.
    
@@ -260,8 +260,8 @@ When we want to test for a difference of two population means, we can conduct a 
 When conducting a hypothesis about a population of a proportion, we use a z-test.
 
 1. We first need a binary sample `x` where "1" indicates a success and "0" indicates a failue (refer to Population proportion intervals in Lecture 3 on how to convert a data set to binary)
-2. We must also know the assumed population proportion `p0`, the side of the test `side`, and the confidence level `1-alpha`
-3. To run the test in R, we can use the funciton `prop.test=(sum(x), length(x), p=p0, alternative = c("side"), conf.level=1-alpha)`
+2. We must also know the assumed population proportion `p0`, the side of the test `side`, and the confidence level `1 - alpha`
+3. To run the test in R, we can use the funciton `prop.test = (sum(x), length(x), p = p0, alternative = c("side"), conf.level = 1 - alpha)`
 
     a. For the side of the test `side`, use `"two.sided"` for two-sided tests, `"less"` for left-tailed tests, and `"greater"` for right-tailed tests.
    
