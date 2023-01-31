@@ -4,4 +4,4 @@
 
 Here's the link: [Intermediate Statistics CA Notes](https://github.com/notalim/intermediate-statistics-ca-notes/blob/main/notes.md).
 
-Feel free to download.
+Feel free to star, fork & download.
