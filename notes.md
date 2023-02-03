@@ -268,3 +268,144 @@ When conducting a hypothesis about a population of a proportion, we use a z-test
     a. For the side of the test `side`, use `"two.sided"` for two-sided tests, `"less"` for left-tailed tests, and `"greater"` for right-tailed tests.
    
     b. If you do not enter a confidence level for the t-test, R will default to a confidence level of 95%.
+
+## Lecture 5
+
+### Hypothesis test of a difference between two means with known $\sigma$
+
+When we wish to test for a difference between two population means when both population standard deviations are known, we can use a two sample z-test.
+
+1. We first need the means of each sample `mean1` and `mean2`, population standard deviations `var1` and `var2`, and the sample sizes of each group `n1` and `n2`.
+2. We then calculate the z-score of the difference in population means `z=(mean1-mean2)/sqrt(var1/n1+var2/n2)`
+3. We then calculate the p-value based on the side of the test.
+
+    a. for two-sided tests where $H_a: \mu_1 \neq \mu_2$, we use `p = 2 * pnorm(abs(z), 0, 1)`
+    
+    b. for left-tailed tests where $H_a: \mu_1 < \mu_2$, we ue `p = pnorm(z, 0, 1)`
+    
+    c. for right-tailed tests where $H_a: \mu_1 > \mu_2$, we use `p = 1 - pnorm(z, 0, 1)`
+    
+4. We then compare our p-value $p$ with our significance level $\alpha$ and write a proper conclusion.
+
+### Hypothesis test of a difference between two means with unknown $\sigma$ and assumed equal variances
+
+When we wish to test for a difference between two population means when we don't know population standard deviations, we can use a two sample t-test.  In this case, we are assuming that the variances of both populations are equal.  There are 2 ways we can solve this using R:
+
+#### Calculating p-value step-by-step:
+
+1. Identify the mean of both samples `mean1` and `mean2`, the pooled sample variance `var`, and the sample size of each group `n1` and `n2`.
+
+    a. The formula for pooled sample variance can be found on the lecture slides for Week 5.
+    
+2. Calculate t-score: `t = (mean1-mean2)/sqrt(var*(1/n1+1/n2))`
+3. Calculate p-value:
+
+    a. for two-sided tests where $H_a: \mu_1 \neq \mu_2$, we use `p = 2 * pt(abs(t), n1 + n2 - 2)`
+    
+    b. for left-tailed tests where $H_a: \mu_1 < \mu_2$, we ue `p = pt(t, n1 + n2 - 2)`
+    
+    c. for right-tailed tests where $H_a: \mu_1 > \mu_2$, we use `p = 1 - pnorm(t, n1 + n2 - 2)`
+   
+4. Compare $p$ with $\alpha$ and write a proper conclusion.
+
+#### Through R function t.test:
+
+1. Identify your two samples `x` and `y`, the side of the test `side`, and the confidence level of the test `1-alpha`
+2. We can now calcualte the p-value using the following R function: `t.test(x, y, alternative=c("side"), paired=FALSE, var.equal=TRUE, conf.level=1-alpha)`
+    
+    a. For the side of the test `side`, use `"two.sided"` for two-sided tests, `"less"` for left-tailed tests, and `"greater"` for right-tailed tests.
+   
+    b. If you do not enter a confidence level for the t-test, R will default to a confidence level of 95%.
+    
+3. Compare $p$ with $\alpha$ and write a proper conclusion.
+
+### Hypothesis test of a difference between two means with no knowledge of $\sigma$
+
+> This process is very similar to the previous test, with only minor differences.  I highly recommend using the t.test function, as it is much easier.
+
+When we wish to test for a difference between two population means when we don't know population standard deviations, we can use a two sample t-test.  There are 2 ways we can solve this using R:
+
+#### Calculating p-value step-by-step:
+
+1. Identify the mean of both samples `mean1` and `mean2`, the variance of each group `var1` and `var2`, and the sample size of each group `n1` and `n2`.
+2. Calculate t-score: `t = (mean1-mean2)/sqrt(var1/n1+var2/n2)`
+3. Calculate degrees of freedom `df = ceil(abs((var1/n1+var2/n2)^2/((var1/n1)^2/(n1-1)+(var2/n2)^2/(n2-1))))`
+4. Calculate p-value: 
+
+    a. for two-sided tests where $H_a: \mu_1 \neq \mu_2$, we use `p = 2 * pt(abs(t), df)`
+    
+    b. for left-tailed tests where $H_a: \mu_1 < \mu_2$, we ue `p = pt(t, df)`
+    
+    c. for right-tailed tests where $H_a: \mu_1 > \mu_2$, we use `p = 1 - pnorm(t, df)`
+   
+5. Compare $p$ with $\alpha$ and write a proper conclusion.
+
+#### Through R function t.test:
+
+1. Identify your two samples `x` and `y`, the side of the test `side`, and the confidence level of the test `1-alpha`
+2. We can now calcualte the p-value using the following R function: `t.test(x, y, alternative=c("side"), paired=FALSE, var.equal=FALSE, conf.level=1-alpha)`
+    
+    a. For the side of the test `side`, use `"two.sided"` for two-sided tests, `"less"` for left-tailed tests, and `"greater"` for right-tailed tests.
+   
+    b. If you do not enter a confidence level for the t-test, R will default to a confidence level of 95%.
+    
+3. Compare $p$ with $\alpha$ and write a proper conclusion.
+
+### Hypothesis testing on the equivalence on population variances
+
+When we wish to test if the variances between two populations are equal, we can use an F-test
+
+#### Calculating p-value step-by-step:
+
+1. Identify your two sample variances `var1` and `var2`, and the size of each sample `n1` and `n2`.
+2. Calculate $f$ `f=var1/var2`
+3. Calculate p-value:
+
+    a. for two-sided tests where $H_a: \sigma^2_1 \neq \sigma^2_2$, use `p = 2*pf(abs(f), n1 - 1, n2 - 1)`
+    
+    b. for left-tailed tests where $H_a: \sigma^2_1 < \sigma^2_2$, use `p = pf(f, n1 - 1, n2 - 1)`
+    
+    c. for right-tailed tests where $H_a: \sigma^2_1 > \sigma^2_2$, `p = 1 - pf(f, n1 - 1, n2 - 1)`
+    
+4. Compare $p$ and $\alpha$ and write a proper conclusion
+
+#### Through R function var.test:
+
+1. Identify your two samples `x` and `y`, the side of the test `side`, and the confidence level `1-alpha`
+2. Calculate p-value with the following function: `var.test(x, y, ratio=1, alternative=c("side"), conf.level=1-alpha)`
+
+    a. For the side of the test `side`, use `"two.sided"` for two-sided tests, `"less"` for left-tailed tests, and `"greater"` for right-tailed tests.
+   
+    b. If you do not enter a confidence level for the t-test, R will default to a confidence level of 95%.
+    
+3. Compare $p$ and $\alpha$ and write a proper conclusion.
+
+### Comparing population proprotions through confidence intervals
+
+1. Identify the two sample population proportions `phat1` and `phat2`, the sample size of each group `n1` and `n2`, and the confidence level `1-alpha`
+2. Estimate the standard deviation using the formula `sd = sqrt(phat1(1-phat1)/n1+phat2(1-phat2)/n2)`
+3. Calculate the z-score at $1-alpha/2$ using: `z = qnorm(1-alpha/2, 0, 1)`
+4. Create the confidence interval by doing the following:
+
+`lower = phat1 - phat2 - z * sd`
+
+`upper = phat1 - phat2 + z * sd`
+
+`CI = c(lower, upper)`
+
+### Hypothesis test of a difference between two population proportions
+
+When conducting a test between two population proportions, we perform a z-test.
+
+1. Identify both sample proportions `phat1` and `phat2` and the sample size of each group `n1` and `n2`.
+2. Calculate the z-score with the function: `z=(phat1-phat2)/sqrt(phat1(1-phat1)/n1+phat2(1-phat2)/n2)`
+3. Calculate p-value:
+
+    a. for two-sided tests where $H_a: \hat{p}_1 \neq \hat{p}_2$, we use `p = 2 * pnorm(abs(z), 0, 1)`
+    
+    b. for left-tailed tests where $H_a: \hat{p}_1 < \hat{p}_2$, we ue `p = pnorm(z, 0, 1)`
+    
+    c. for right-tailed tests where $H_a: \hat{p}_1 > \hat{p}_2$, we use `p = 1 - pnorm(z, 0, 1)`
+    
+4. Compare $p$ and $\alpha$ and write a proper conclusion.
+
