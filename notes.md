@@ -271,6 +271,8 @@ When conducting a hypothesis about a population of a proportion, we use a z-test
 
 ## Lecture 5
 
+>If allowed, I recommend using R's built-in functions for the hypothesis tests.  There are less steps, so there is a smaller chance of making mistakes.
+
 ### Hypothesis test of a difference between two means with known $\sigma$
 
 When we wish to test for a difference between two population means when both population standard deviations are known, we can use a two sample z-test.
@@ -279,7 +281,7 @@ When we wish to test for a difference between two population means when both pop
 2. We then calculate the z-score of the difference in population means `z=(mean1-mean2)/sqrt(var1/n1+var2/n2)`
 3. We then calculate the p-value based on the side of the test.
 
-    a. for two-sided tests where $H_a: \mu_1 \neq \mu_2$, we use `p = 2 * pnorm(abs(z), 0, 1)`
+    a. for two-sided tests where $H_a: \mu_1 \neq \mu_2$, we use `p = 2 * pnorm(-abs(z), 0, 1)`
     
     b. for left-tailed tests where $H_a: \mu_1 < \mu_2$, we ue `p = pnorm(z, 0, 1)`
     
@@ -300,7 +302,7 @@ When we wish to test for a difference between two population means when we don't
 2. Calculate t-score: `t = (mean1-mean2)/sqrt(var*(1/n1+1/n2))`
 3. Calculate p-value:
 
-    a. for two-sided tests where $H_a: \mu_1 \neq \mu_2$, we use `p = 2 * pt(abs(t), n1 + n2 - 2)`
+    a. for two-sided tests where $H_a: \mu_1 \neq \mu_2$, we use `p = 2 * pt(-abs(t), n1 + n2 - 2)`
     
     b. for left-tailed tests where $H_a: \mu_1 < \mu_2$, we ue `p = pt(t, n1 + n2 - 2)`
     
@@ -321,18 +323,16 @@ When we wish to test for a difference between two population means when we don't
 
 ### Hypothesis test of a difference between two means with no knowledge of $\sigma$
 
-> This process is very similar to the previous test, with only minor differences.  I highly recommend using the t.test function, as it is much easier.
-
 When we wish to test for a difference between two population means when we don't know population standard deviations, we can use a two sample t-test.  There are 2 ways we can solve this using R:
 
 #### Calculating p-value step-by-step:
 
 1. Identify the mean of both samples `mean1` and `mean2`, the variance of each group `var1` and `var2`, and the sample size of each group `n1` and `n2`.
 2. Calculate t-score: `t = (mean1-mean2)/sqrt(var1/n1+var2/n2)`
-3. Calculate degrees of freedom `df = ceil(abs((var1/n1+var2/n2)^2/((var1/n1)^2/(n1-1)+(var2/n2)^2/(n2-1))))`
+3. Calculate degrees of freedom `df = abs((var1/n1+var2/n2)^2/((var1/n1)^2/(n1-1)+(var2/n2)^2/(n2-1)))`
 4. Calculate p-value: 
 
-    a. for two-sided tests where $H_a: \mu_1 \neq \mu_2$, we use `p = 2 * pt(abs(t), df)`
+    a. for two-sided tests where $H_a: \mu_1 \neq \mu_2$, we use `p = 2 * pt(-abs(t), df)`
     
     b. for left-tailed tests where $H_a: \mu_1 < \mu_2$, we ue `p = pt(t, df)`
     
@@ -361,7 +361,7 @@ When we wish to test if the variances between two populations are equal, we can 
 2. Calculate $f$ `f=var1/var2`
 3. Calculate p-value:
 
-    a. for two-sided tests where $H_a: \sigma^2_1 \neq \sigma^2_2$, use `p = 2*pf(abs(f), n1 - 1, n2 - 1)`
+    a. for two-sided tests where $H_a: \sigma^2_1 \neq \sigma^2_2$, use `p = 2*pf(f, n1 - 1, n2 - 1)` **Please note that this will only work when $S^2_1 \leq S^2_2$ When S^2_1 > S^2_2, we instead use:** `p = 2*(1-pf(f, n1-1, n2-1))`
     
     b. for left-tailed tests where $H_a: \sigma^2_1 < \sigma^2_2$, use `p = pf(f, n1 - 1, n2 - 1)`
     
@@ -401,7 +401,7 @@ When conducting a test between two population proportions, we perform a z-test.
 2. Calculate the z-score with the function: `z=(phat1-phat2)/sqrt(phat1(1-phat1)/n1+phat2(1-phat2)/n2)`
 3. Calculate p-value:
 
-    a. for two-sided tests where $H_a: \hat{p}_1 \neq \hat{p}_2$, we use `p = 2 * pnorm(abs(z), 0, 1)`
+    a. for two-sided tests where $H_a: \hat{p}_1 \neq \hat{p}_2$, we use `p = 2 * pnorm(-abs(z), 0, 1)`
     
     b. for left-tailed tests where $H_a: \hat{p}_1 < \hat{p}_2$, we ue `p = pnorm(z, 0, 1)`
     
