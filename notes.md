@@ -220,7 +220,7 @@ When we wish to conduct a hypothesis test of a population mean when population s
 2. Now we calculate the z-score of the sample using the formula `z = sqrt(n) * (xbar - mu) / sigma`.
 3. Then we calculate the p-value of the sample based on the z-score.
 
-    a. for two-sided tests, we can use `p = 2 * pnorm( -abs(z))`.
+    a. for two-sided tests, we can use `p = 2 * pnorm(- abs(z))`.
     
     b. for left-tailed tests, we can use `p = pnorm(z)`.
     
@@ -232,7 +232,7 @@ When we wish to conduct a hypothesis test of a population mean when population s
 When we wish to conduct a hypothesis test of a population mean, but we do not know the population standard deviation, we must use a one sample t-test.
 
 1. We first must have our sample `x`, the side of the test (two-sided, right-tailed, or left-tailed) `side`, the assumed population mean `mu0`, and the confidence level of the test `1 - alpha`
-2. To conduct a one sample t test in we can use the function `t.test(x, alternative = c("side"), mu = mu0, conf.level = 1 - alpha`
+2. To conduct a one sample t test in we can use the function `t.test(x, alternative = c("side"), mu = mu0, conf.level = 1 - alpha)`
 
     a. For the side of the test `side`, use `"two.sided"` for two-sided tests, `"less"` for left-tailed tests, and `"greater"` for right-tailed tests.
     
@@ -244,7 +244,7 @@ When we wish to conduct a hypothesis test of a population mean, but we do not kn
 
 When we want to test for a difference of two population means within the same test subjects, we can conduct a two sample paired t-test.
 
-> The difference between a paired t-test and unpaired t-test is that a paired t-test involves the same test subjects while the test subjects in an unpaired t-test are unrelated
+> The difference between a paired t-test and unpaired t-test is that a paired t-test involves the same test subjects while the test subjects in an unpaired t-test are unrelated.
 
 1. We first need our two samples `x` and `y`, the side of the test `side`, and the confidence level of the test `1 - alpha`
 2. We can use the R function `t.test(x, y, alternative = c("side"), paired = TRUE, conf.level = 1 - alpha`
@@ -271,7 +271,7 @@ When conducting a hypothesis about a population of a proportion, we use a z-test
 
 ## Lecture 5
 
->If allowed, I recommend using R's built-in functions for the hypothesis tests.  There are less steps, so there is a smaller chance of making mistakes.
+> **Tip**: If allowed, I recommend using R's built-in functions for the hypothesis tests.  There are less steps, so there is a smaller chance of making mistakes.
 
 ### Hypothesis test of a difference between two means with known $\sigma$
 
@@ -299,7 +299,7 @@ When we wish to test for a difference between two population means when we don't
 
     a. The formula for pooled sample variance can be found on the lecture slides for Week 5.
     
-2. Calculate t-score: `t = (mean1-mean2)/sqrt(var*(1/n1+1/n2))`
+2. Calculate t-score: `t = (mean1 - mean2) / sqrt(var * (1 / n1 + 1 / n2))`
 3. Calculate p-value:
 
     a. for two-sided tests where $H_a: \mu_1 \neq \mu_2$, we use `p = 2 * pt(-abs(t), n1 + n2 - 2)`
@@ -310,7 +310,7 @@ When we wish to test for a difference between two population means when we don't
    
 4. Compare $p$ with $\alpha$ and write a proper conclusion.
 
-#### Through R function t.test:
+#### Through R function t.test():
 
 1. Identify your two samples `x` and `y`, the side of the test `side`, and the confidence level of the test `1-alpha`
 2. We can now calcualte the p-value using the following R function: `t.test(x, y, alternative=c("side"), paired=FALSE, var.equal=TRUE, conf.level=1-alpha)`
@@ -358,10 +358,10 @@ When we wish to test if the variances between two populations are equal, we can 
 #### Calculating p-value step-by-step:
 
 1. Identify your two sample variances `var1` and `var2`, and the size of each sample `n1` and `n2`.
-2. Calculate $f$ `f=var1/var2`
+2. Calculate $f$ `f = var1 / var2`
 3. Calculate p-value:
 
-    a. for two-sided tests where $H_a: \sigma^2_1 \neq \sigma^2_2$, use `p = 2*pf(f, n1 - 1, n2 - 1)` **Please note that this will only work when $S^2_1 \leq S^2_2$ When $S^2_1 > S^2_2$, we instead use:** `p = 2*(1-pf(f, n1-1, n2-1))`
+    a. for two-sided tests where $H_a: \sigma^2_1 \neq \sigma^2_2$, use `p = 2 * pf(f, n1 - 1, n2 - 1)` **Please note that this will only work when $S^2_1 \leq S^2_2$ When $S^2_1 > S^2_2$, we instead use:** `p = 2 * (1 - pf(f, n1 - 1, n2 - 1))`
     
     b. for left-tailed tests where $H_a: \sigma^2_1 < \sigma^2_2$, use `p = pf(f, n1 - 1, n2 - 1)`
     
@@ -371,8 +371,8 @@ When we wish to test if the variances between two populations are equal, we can 
 
 #### Through R function var.test:
 
-1. Identify your two samples `x` and `y`, the side of the test `side`, and the confidence level `1-alpha`
-2. Calculate p-value with the following function: `var.test(x, y, ratio=1, alternative=c("side"), conf.level=1-alpha)`
+1. Identify your two samples `x` and `y`, the side of the test `side`, and the confidence level `1 - alpha`
+2. Calculate p-value with the following function: `var.test(x, y, ratio = 1, alternative = c("side"), conf.level = 1 - alpha)`
 
     a. For the side of the test `side`, use `"two.sided"` for two-sided tests, `"less"` for left-tailed tests, and `"greater"` for right-tailed tests.
    
@@ -382,9 +382,9 @@ When we wish to test if the variances between two populations are equal, we can 
 
 ### Comparing population proprotions through confidence intervals
 
-1. Identify the two sample population proportions `phat1` and `phat2`, the sample size of each group `n1` and `n2`, and the confidence level `1-alpha`
-2. Estimate the standard deviation using the formula `sd = sqrt(phat1(1-phat1)/n1+phat2(1-phat2)/n2)`
-3. Calculate the z-score at $1-alpha/2$ using: `z = qnorm(1-alpha/2, 0, 1)`
+1. Identify the two sample population proportions `phat1` and `phat2`, the sample size of each group `n1` and `n2`, and the confidence level `1 - alpha`
+2. Estimate the standard deviation using the formula `sd = sqrt(phat1(1 - phat1) / n1 + phat2 (1 - phat2) / n2)`
+3. Calculate the z-score at $1 - alpha / 2$ using: `z = qnorm(1 - alpha / 2, 0, 1)`
 4. Create the confidence interval by doing the following:
 
 `lower = phat1 - phat2 - z * sd`
@@ -398,7 +398,7 @@ When we wish to test if the variances between two populations are equal, we can 
 When conducting a test between two population proportions, we perform a z-test.
 
 1. Identify both sample proportions `phat1` and `phat2` and the sample size of each group `n1` and `n2`.
-2. Calculate the z-score with the function: `z=(phat1-phat2)/sqrt(phat1(1-phat1)/n1+phat2(1-phat2)/n2)`
+2. Calculate the z-score with the function: `z = (phat1 - phat2) / sqrt(phat1(1 - phat1) / n1 + phat2(1 - phat2) / n2)`
 3. Calculate p-value:
 
     a. for two-sided tests where $H_a: \hat{p}_1 \neq \hat{p}_2$, we use `p = 2 * pnorm(-abs(z), 0, 1)`
