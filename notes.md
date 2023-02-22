@@ -8,6 +8,7 @@
 
 **I highly suggest installing _R Markdown_!** It will make your life so much easier. [Here's a great guide how to install _R Markdown_.](https://alexd106.github.io/intro2R/install_rmarkdown.html)
 
+---
 ## Lecture 1
 
 R formulas are **very** similar to Python. If you ever used _pandas_ or _scipy_, you will easily get into _RStudio_.
@@ -66,6 +67,7 @@ detrended QQ plot: `qqline(x)`
 
 > **Tip**: you can always see the history of your console in the upper right corner, so if you ever need to remember a command you used last time you opened _RStudio_, you can always see it there.
 
+---
 ## Lecture 2
 
 In _R Markdown_ you can easily format math formulas! To do that, you just have to use \$ signs from both sides of an equation. There are a couple more cool things you could do inside the math equation:
@@ -134,6 +136,7 @@ Note: $df_1$ refers to the degrees of freedom of the chi-square distribution in 
 
 > At this point, you might be really overwhelmed with the amount of theory. **I understand how you might feel**, but later all of these will start making sense. Each one of these distributions has a use, and you will be introduced to them shortly.
 
+---
 ## Lecture 3
 
 Confidence levels **are usually 95%**, if not stated otherwise.
@@ -194,6 +197,7 @@ To create a population proportion interval, given the binary dataset`bdata`:
 4. Then your prop-interval is in between bounds 1 and 2, where: `bound1, bound2 = phat ± qnorm(alpha / 2) * sqrt(phat * (1 - phat)) / sqrt(n)`.
 5. `propinterval = c(bound1, bound2)`.
 
+---
 ## Lecture 4
 
 $H_0$ is the null hypothesis and proposes that any difference between groups is due to statistical chance.
@@ -268,6 +272,26 @@ When conducting a hypothesis about a population of a proportion, we use a z-test
     a. For the side of the test `side`, use `"two.sided"` for two-sided tests, `"less"` for left-tailed tests, and `"greater"` for right-tailed tests.
    
     b. If you do not enter a confidence level for the t-test, R will default to a confidence level of 95%.
+---
+
+# Importing and working datasets in RStudio
+
+In the upcoming assignments, you'll have to import datasets in *RStudio*. Instead of typing data ina  vector manually, you could import it with a built-in import. ~~Trust me, you'll need it when you have huge datasets.~~
+
+Usually, you'll work with Excel files. To import a dataset:
+
+1. Download the Excel dataset from Canvas;
+2. Click on *File* -> *Import Dataset* -> *From Excel*;
+3. Click *Browse...* and find the dataset in your system.
+4. From here you can either import it to your console or Markdown code block. 
+
+When working with datasets, you will have them imported as tables. To access a column in that table, use the `$` operator. For example, if you have dataset `dataSet` and you need a column called `groupA`, you would do something like this:
+
+`data = dataSet$groupA`
+
+> **Tip**: Try to save your dataset columns into new vectors in the beginning, instead of typing them out every time.
+
+---
 
 ## Lecture 5
 
