@@ -1,0 +1,907 @@
+\hypertarget{intermediate-statistics-ca-rstudio-notes}{%
+\section{Intermediate Statistics CA RStudio
+Notes}\label{intermediate-statistics-ca-rstudio-notes}}
+
+\begin{quote}
+\textbf{Welcome to MA 331 Spring 2023!}
+\end{quote}
+
+\begin{quote}
+These notes are meant to help you succeed in this course. These will
+include necessary tips for \emph{R} formulas you will need throughout
+this course. Feel free to give feedback on these via our emails:
+akassymo@stevens.edu, aleather@stevens.edu.
+\end{quote}
+
+\begin{quote}
+\textbf{These notes are not meant to replace the slides.} For more info,
+please refer to the slides.
+\end{quote}
+
+\textbf{I highly suggest installing \emph{R Markdown}!} It will make
+your life so much easier.
+\href{https://alexd106.github.io/intro2R/install_rmarkdown.html}{Here's
+a great guide how to install \emph{R Markdown}.}
+
+\hypertarget{lecture-1}{%
+\subsection{Lecture 1}\label{lecture-1}}
+
+R formulas are \textbf{very} similar to Python. If you ever used
+\emph{pandas} or \emph{scipy}, you will easily get into \emph{RStudio}.
+
+To separate code blocks from text in RMarkdown, you need to type:
+
+\begin{verbatim}
+```{r}
+
+*code here*
+
+```
+\end{verbatim}
+
+You have to close the code block if you want to have normal text after.
+
+\hypertarget{some-useful-r-formulas}{%
+\paragraph{Some useful R formulas}\label{some-useful-r-formulas}}
+
+create a variable: \texttt{x\ =\ ...}
+
+\begin{quote}
+\textbf{Tip}: if you want to see what is stored in your variable, just
+type its name.
+\end{quote}
+
+create a vector: \texttt{vector1\ =\ c(x1,\ ...,\ xn)}
+
+length of a vector: \texttt{length(v1)}
+
+create a table / vector of vectors:
+\texttt{table1\ =\ cbind(v1,\ ...,\ vn)}
+
+\begin{quote}
+\textbf{Tip}: if you want to see what is stored in your vector, just
+type its name.
+\end{quote}
+
+five-number summary: \texttt{summary(x)}
+
+mean of a sample: \texttt{mean(x)}
+
+median of a sample: \texttt{median(x)}
+
+standard deviation of a sample: \texttt{sd(x)}
+
+variance of a sample: \texttt{var(x)}
+
+correlation coefficient between two samples: \texttt{cor(x,y)}
+
+\begin{quote}
+\textbf{Tip}: a good practice would be to store these statistics in a
+separate variables. Let's say you test effectiveness of some product and
+store the data in a vector \texttt{data}. Use one-liners like
+\texttt{dataMean\ =\ mean(x)} or \texttt{dataSD\ =\ sd(x)} in the
+beginning of each Markdown file so you could always access those.
+\end{quote}
+
+scatterplot: \texttt{plot(x)}
+
+boxplot, histogram, pie-chart: \texttt{boxplot(x),\ hist(x),\ pie(x)}
+
+\hypertarget{normal-distribution}{%
+\subsubsection{Normal Distribution}\label{normal-distribution}}
+
+cdf of a normal distribution: \texttt{pnorm(x,\ mean,\ sd)}
+
+quantile of a normal distribution: \texttt{qnorm(q,\ mean,\ sd)}
+
+normal QQ plot: \texttt{qqnorm(x)}
+
+detrended QQ plot: \texttt{qqline(x)}
+
+\begin{quote}
+\textbf{Tip}: you can always see the history of your console in the
+upper right corner, so if you ever need to remember a command you used
+last time you opened \emph{RStudio}, you can always see it there.
+\end{quote}
+
+\hypertarget{lecture-2}{%
+\subsection{Lecture 2}\label{lecture-2}}
+
+In \emph{R Markdown} you can easily format math formulas! To do that,
+you just have to use \$ signs from both sides of an equation. There are
+a couple more cool things you could do inside the math equation:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Use an underscore \_\{\textless index\textgreater\} to add an index to
+  your equation: \texttt{\$H\_\{0\}\$} would give you \(H_{0}\).
+\item
+  Use the tag \textbackslash overline\{\textless equation\textgreater\}
+  to add a bar to your equation:
+  \texttt{\$\textbackslash{}overline\{X\}\$} would give you
+  \(\overline{X}\). \textbf{Don't forget the figure parentheses}.
+\item
+  You can directly type the greek letters in the formula using a
+  backslash: \texttt{\$\textbackslash{}sigma\$} would give you
+  \(\sigma\). If you need the capitalized letter \(\Sigma\), just change
+  it to \texttt{\$\textbackslash{}Sigma\$}.
+\item
+  To do fractions, type \textbackslash frac\{numerator\}\{denominanor\},
+  so \texttt{\$\textbackslash{}frac\{1\}\{n\}\$} would give you
+  \(\frac{1}{n}\).
+\end{enumerate}
+
+\begin{quote}
+\textbf{Tip}: Use copy-paste. At first, this might seem tedious, but
+it's really easy when you get the grasp of it.
+\end{quote}
+
+A very cool thing \emph{R} can do is to generate a random sample of
+trials.
+
+To generate a random sample on a \textbf{normal} distribution:
+\texttt{rnorm(sample\ size,\ mean,\ sd)}
+
+\hypertarget{binomial-distribution}{%
+\subsubsection{Binomial Distribution}\label{binomial-distribution}}
+
+cdf of a binomial distribution:
+\texttt{pbinom(x,\ number\ of\ trials,\ probability\ of\ a\ successful\ trial)}
+
+quantile of a binomial distribution:
+\texttt{qbinom(q,\ number\ of\ trials,\ probability\ of\ a\ successful\ trial)}
+
+pmf of a binomial distribution:
+\texttt{dbinom(x,\ number\ of\ trials,\ probability\ of\ a\ successful\ trial)}
+
+\begin{quote}
+Be aware that pmf is not pdf! pmf (probability mass function) is used to
+describe discrete probability distributions while pdf (probability
+density functions) is used to describe continuous probability
+distributions.
+\end{quote}
+
+To generate a random sample on a binomial distribution:
+\texttt{rbinom(number\ of\ observations,\ number\ of\ trials,\ probability\ of\ a\ successful\ trial)}
+
+\begin{quote}
+\textbf{Tip}: At this point, you probably have noticed that both normal
+and binomial distributions have similar \emph{R} function calls. For
+example, cdf always starts with a \texttt{p..} and quantile always
+starts with \texttt{q..}. This pattern will repeat in the future!
+\end{quote}
+
+\hypertarget{chi-square-distribution}{%
+\subsubsection{Chi-square distribution}\label{chi-square-distribution}}
+
+Chi-square distribution is a sum of squares of random variables. With
+chi-square distribution, you are introduced to a new parameter - degrees
+of freedom \(df\).
+
+In the case of chi-square distribution, \(df = \mu\).
+
+cdf of a chi-square distribution: \texttt{pchisq(x,\ df)}
+
+quantile of a chi-square distribution: \texttt{qchisq(q,\ df)}
+
+\hypertarget{student-tau-distribution}{%
+\subsubsection{\texorpdfstring{Student
+\(\tau\)-distribution}{Student \textbackslash tau-distribution}}\label{student-tau-distribution}}
+
+T-distribution is a ratio between a normal and a chi-square
+distribution.
+
+In the case of t-distribution, \(df = n - 1\), \(\mu = 0\) and
+\(var = \frac{n}{n-2}\) for \(n>2\).
+
+cdf of a t-distribution: \texttt{pt(x,\ df)}
+
+quantile of a t-distribution: \texttt{qt(q,\ df)}
+
+\hypertarget{f-distribution}{%
+\subsubsection{F-distribution}\label{f-distribution}}
+
+F-distribution is a ratio between to chi-square distributions. Because
+of that, it has two \(df\) parameters.
+
+In the case of F-distribution, \(\mu = \frac{df_2}{df_2 - 2}\) for
+\(m>2\).
+
+cdf of an F-distribution: \texttt{pf(x,\ df1,\ df2)}
+
+quantile of an F-distribution: \texttt{qf(q,\ df1,\ df2)}
+
+Note: \(df_1\) refers to the degrees of freedom of the chi-square
+distribution in the numerator and \(df_2\) refers to the degrees of
+freedom in the denominator.
+
+\begin{quote}
+At this point, you might be really overwhelmed with the amount of
+theory. \textbf{I understand how you might feel}, but later all of these
+will start making sense. Each one of these distributions has a use, and
+you will be introduced to them shortly.
+\end{quote}
+
+\hypertarget{lecture-3}{%
+\subsection{Lecture 3}\label{lecture-3}}
+
+Confidence levels \textbf{are usually 95\%}, if not stated otherwise.
+
+\hypertarget{confidence-interval-with-a-known-sigma}{%
+\subsubsection{\texorpdfstring{Confidence interval with a known
+\(\sigma\)}{Confidence interval with a known \textbackslash sigma}}\label{confidence-interval-with-a-known-sigma}}
+
+\hypertarget{section}{%
+\subsubsection{}\label{section}}
+
+To find a confidence interval of a population mean with a \textbf{known}
+standard deviation (z-interval), there is a very easy procedure:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Let's say, you're given a vector \texttt{data}, standard deviation
+  \texttt{sd} and confidence level \texttt{cf}.
+\item
+  Find the sample size of your dataset: \texttt{n\ =\ length(data)}.
+\item
+  Given confidence level \texttt{cf}, your quantile alpha is
+  \texttt{alpha\ =\ 1\ -\ cf}.
+\item
+  Then your z-interval is in between bounds 1 and 2, where:
+  \texttt{bound1,\ bound2\ =\ mean(data)\ ±\ qnorm(alpha\ /\ 2)\ *\ sd\ /\ sqrt(n)}.
+\item
+  \texttt{zinterval\ =\ c(bound1,\ bound2)}.
+\end{enumerate}
+
+\hypertarget{confidence-interval-with-an-unknown-sigma}{%
+\subsubsection{\texorpdfstring{Confidence interval with an unknown
+\(\sigma\)}{Confidence interval with an unknown \textbackslash sigma}}\label{confidence-interval-with-an-unknown-sigma}}
+
+\hypertarget{section-1}{%
+\subsubsection{}\label{section-1}}
+
+If you don't known standard deviation of your population, you can use
+sample variance as an \textbf{estimate} of your population variance.
+This is the main trick to get t-interval:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  You're given a dataset \texttt{data} and confidence level \texttt{cf}.
+\item
+  Find the sample size of your dataset: \texttt{n\ =\ length(data)}.
+\item
+  Given confidence level \texttt{cf}, your quantile alpha is
+  \texttt{alpha\ =\ 1\ -\ cf}.
+\item
+  Find the sample standard deviation and sample mean:
+  \texttt{sampleSD\ =\ sd(data)}.
+\item
+  Then your t-interval is in between bounds 1 and 2, where:
+  \texttt{bound1,\ bound2\ =\ mean(data)\ ∓\ qt(alpha\ /\ 2,\ n\ -\ 1)\ *\ sampleSD\ /\ sqrt(n)}.
+\item
+  \texttt{tinterval\ =\ c(bound1,\ bound2)}.
+\end{enumerate}
+
+\begin{quote}
+\textbf{Tip}: you can reassign a new value to a variable like
+\texttt{bound1}, \emph{R Markdown} follows the order of commands in
+which they're typed in.
+\end{quote}
+
+\hypertarget{confidence-interval-irrespective-of-mu}{%
+\subsubsection{\texorpdfstring{Confidence interval irrespective of
+\(\mu\)}{Confidence interval irrespective of \textbackslash mu}}\label{confidence-interval-irrespective-of-mu}}
+
+\hypertarget{section-2}{%
+\subsubsection{}\label{section-2}}
+
+In the case, where we don't have both population mean and variance and
+we would like to find a confidence interval for the population variance,
+we can find chi-interval. We are using sample variance as an
+\textbf{estimate} for our population variance.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  You're given a dataset \texttt{data} and confidence level \texttt{cf}.
+\item
+  Find the sample size of your dataset: \texttt{n\ =\ length(data)}.
+\item
+  Given confidence level \texttt{cf}, your quantile alpha is
+  \texttt{alpha\ =\ 1\ -\ cf}.
+\item
+  Find the sample variance: \texttt{samplevar\ =\ var(data)}.
+\item
+  Then your chi-interval is in between bounds 1 and 2, where:
+  \texttt{bound1\ =\ (n\ -\ 1)\ *\ samplevar\ /\ qchisq(1\ -\ alpha\ /\ 2,\ n\ -\ 1)}
+  \&
+  \texttt{bound2\ =\ (n\ -\ 1)\ *\ samplevar\ /\ qchisq(alpha\ /\ 2,\ n\ -\ 1)}.
+\item
+  \texttt{chinterval\ =\ c(bound1,\ bound2)}.
+\end{enumerate}
+
+\hypertarget{population-proportion-interval}{%
+\subsubsection{Population proportion
+interval}\label{population-proportion-interval}}
+
+\hypertarget{section-3}{%
+\subsubsection{}\label{section-3}}
+
+Given a dataset \texttt{data} we could convert it to binary with:
+\texttt{bdata\ =\ ifelse(data\ \textgreater{}\ ref,\ 1,\ 0)}, where
+\texttt{ref} is a reference point. Example: given a dataset
+\texttt{grades\ =\ {[}98,\ 56,\ 76,\ 47,\ 86{]}}:
+
+\begin{verbatim}
+passorfail = ifelse(grades > 70, 1, 0)
+passorfail
+\end{verbatim}
+
+\begin{verbatim}
+[1] 1, 0, 1, 0, 1
+\end{verbatim}
+
+To create a population proportion interval, given the binary
+dataset\texttt{bdata}:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Find the sample size of your dataset: \texttt{n\ =\ length(bdata)}.
+\item
+  Given confidence level \texttt{cf}, your quantile alpha is
+  \texttt{alpha\ =\ 1\ -\ cf}.
+\item
+  Find the sample proportion: \texttt{phat\ =\ mean(data)}.
+\item
+  Then your prop-interval is in between bounds 1 and 2, where:
+  \texttt{bound1,\ bound2\ =\ phat\ ±\ qnorm(alpha\ /\ 2)\ *\ sqrt(phat\ *\ (1\ -\ phat))\ /\ sqrt(n)}.
+\item
+  \texttt{propinterval\ =\ c(bound1,\ bound2)}.
+\end{enumerate}
+
+\hypertarget{lecture-4}{%
+\subsection{Lecture 4}\label{lecture-4}}
+
+\(H_0\) is the null hypothesis and proposes that any difference between
+groups is due to statistical chance.
+
+\(H_a\) is the alternative hypothesis and contradicts the null
+hypothesis.
+
+\textbf{The null and alternative hypotheses must always be stated before
+a hypothesis test.}
+
+The goal of a hypothesis test to either reject or fail to reject the
+null hypothesis given a sample of the population. To come to a
+conclusion about the null hypothesis, we must compare the \emph{p-value}
+\(p\) of the sample with the significance level \(\alpha\) of the test.
+
+The \emph{p value} of a sample is the probability that you obtain a
+sample that is at least as extreme as the one obtained.
+
+When \(p < \alpha\), we \textbf{reject} the null hypothesis in favor of
+the alternative hypothesis.
+
+When \(p > \alpha\), we \textbf{fail to reject} the null hypothesis.
+
+The alternative hypothesis can either be \textbf{two-tailed}
+\(\mu \neq \mu_0\), \textbf{left-tailed} \(\mu < \mu_0\), or
+\textbf{right-tailed} \(\mu > \mu_0\).
+
+\hypertarget{hypothesis-test-of-a-population-mean-with-known-sigma}{%
+\subsubsection{\texorpdfstring{Hypothesis test of a population mean with
+known
+\(\sigma\)}{Hypothesis test of a population mean with known \textbackslash sigma}}\label{hypothesis-test-of-a-population-mean-with-known-sigma}}
+
+When we wish to conduct a hypothesis test of a population mean when
+population standard deviation is known, we will use a z-test.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  First, we must identify the assumed mean of the population
+  \texttt{mu}, mean on the sample \texttt{xbar}, sample size \texttt{n},
+  and population standard deviation \texttt{sd}.
+\item
+  Now we calculate the z-score of the sample using the formula
+  \texttt{z\ =\ sqrt(n)\ *\ (xbar\ -\ mu)\ /\ sigma}.
+\item
+  Then we calculate the p-value of the sample based on the z-score.
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    for two-sided tests, we can use
+    \texttt{p\ =\ 2\ *\ pnorm(-\ abs(z))}.
+  \item
+    for left-tailed tests, we can use \texttt{p\ =\ pnorm(z)}.
+  \item
+    for right-tailed tests, we can use \texttt{p\ =\ 1\ -\ pnorm(z)}.
+  \end{enumerate}
+\item
+  Lastly, compare \(p\) to \(\alpha\) and write a proper conclusion.
+\end{enumerate}
+
+\hypertarget{hypothesis-test-of-a-population-mean-with-unknown-sigma}{%
+\subsubsection{\texorpdfstring{Hypothesis test of a population mean with
+unknown
+\(\sigma\)}{Hypothesis test of a population mean with unknown \textbackslash sigma}}\label{hypothesis-test-of-a-population-mean-with-unknown-sigma}}
+
+When we wish to conduct a hypothesis test of a population mean, but we
+do not know the population standard deviation, we must use a one sample
+t-test.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  We first must have our sample \texttt{x}, the side of the test
+  (two-sided, right-tailed, or left-tailed) \texttt{side}, the assumed
+  population mean \texttt{mu0}, and the confidence level of the test
+  \texttt{1\ -\ alpha}
+\item
+  To conduct a one sample t test in we can use the function
+  \texttt{t.test(x,\ alternative\ =\ c("side"),\ mu\ =\ mu0,\ conf.level\ =\ 1\ -\ alpha)}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    For the side of the test \texttt{side}, use \texttt{"two.sided"} for
+    two-sided tests, \texttt{"less"} for left-tailed tests, and
+    \texttt{"greater"} for right-tailed tests.
+  \item
+    If you do not enter a confidence level for the t-test, R will
+    default to a confidence level of 95\%.
+  \end{enumerate}
+\item
+  R will automatically compute the p-value for you, so now you just
+  compare \(p\) with \(\alpha\) and write a proper conclusion.
+\end{enumerate}
+
+\hypertarget{hypothesis-test-of-the-difference-of-two-population-means}{%
+\subsubsection{Hypothesis test of the difference of two population
+means}\label{hypothesis-test-of-the-difference-of-two-population-means}}
+
+When we want to test for a difference of two population means within the
+same test subjects, we can conduct a two sample paired t-test.
+
+\begin{quote}
+The difference between a paired t-test and unpaired t-test is that a
+paired t-test involves the same test subjects while the test subjects in
+an unpaired t-test are unrelated.
+\end{quote}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  We first need our two samples \texttt{x} and \texttt{y}, the side of
+  the test \texttt{side}, and the confidence level of the test
+  \texttt{1\ -\ alpha}
+\item
+  We can use the R function
+  \texttt{t.test(x,\ y,\ alternative\ =\ c("side"),\ paired\ =\ TRUE,\ conf.level\ =\ 1\ -\ alpha}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    We do not need to enter a mean for the difference between the
+    population means, since under the null hypothesis, we assume there
+    is no difference between the means \(H_0: \mu_x - \mu_y = 0\).
+  \item
+    For the side of the test \texttt{side}, use \texttt{"two.sided"} for
+    two-sided tests, \texttt{"less"} for left-tailed tests, and
+    \texttt{"greater"} for right-tailed tests.
+  \item
+    If you do not enter a confidence level for the t-test, R will
+    default to a confidence level of 95\%.
+  \end{enumerate}
+\item
+  R will calculate the p-value, so now you compare \(p\) with \(alpha\)
+  and write a proper conclusion.
+\end{enumerate}
+
+\hypertarget{hypothesis-test-of-a-population-proportion}{%
+\subsubsection{Hypothesis test of a population
+proportion}\label{hypothesis-test-of-a-population-proportion}}
+
+When conducting a hypothesis about a population of a proportion, we use
+a z-test.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  We first need a binary sample \texttt{x} where ``1'' indicates a
+  success and ``0'' indicates a failue (refer to Population proportion
+  intervals in Lecture 3 on how to convert a data set to binary)
+\item
+  We must also know the assumed population proportion \texttt{p0}, the
+  side of the test \texttt{side}, and the confidence level
+  \texttt{1\ -\ alpha}
+\item
+  To run the test in R, we can use the funciton
+  \texttt{prop.test\ =\ (sum(x),\ length(x),\ p\ =\ p0,\ alternative\ =\ c("side"),\ conf.level\ =\ 1\ -\ alpha)}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    For the side of the test \texttt{side}, use \texttt{"two.sided"} for
+    two-sided tests, \texttt{"less"} for left-tailed tests, and
+    \texttt{"greater"} for right-tailed tests.
+  \item ~
+    \hypertarget{if-you-do-not-enter-a-confidence-level-for-the-t-test-r-will-default-to-a-confidence-level-of-95.}{%
+    \subsection{If you do not enter a confidence level for the t-test, R
+    will default to a confidence level of
+    95\%.}\label{if-you-do-not-enter-a-confidence-level-for-the-t-test-r-will-default-to-a-confidence-level-of-95.}}
+  \end{enumerate}
+\end{enumerate}
+
+\hypertarget{importing-and-working-datasets-in-rstudio}{%
+\section{Importing and working datasets in
+RStudio}\label{importing-and-working-datasets-in-rstudio}}
+
+In the upcoming assignments, you'll have to import datasets in
+\emph{RStudio}. Instead of typing data ina vector manually, you could
+import it with a built-in import. \st{Trust me, you'll need it when you
+have huge datasets.}
+
+Usually, you'll work with Excel files. To import a dataset:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Download the Excel dataset from Canvas;
+\item
+  Click on \emph{File} -\textgreater{} \emph{Import Dataset}
+  -\textgreater{} \emph{From Excel};
+\item
+  Click \emph{Browse\ldots{}} and find the dataset in your system.
+\item
+  From here you can either import it to your console or Markdown code
+  block.
+\end{enumerate}
+
+When working with datasets, you will have them imported as tables. To
+access a column in that table, use the \texttt{\$} operator. For
+example, if you have dataset \texttt{dataSet} and you need a column
+called \texttt{groupA}, you would do something like this:
+
+\texttt{data\ =\ dataSet\$groupA}
+
+\begin{quote}
+\textbf{Tip}: Try to save your dataset columns into new vectors in the
+beginning, instead of typing them out every time.
+\end{quote}
+
+\hypertarget{lecture-5}{%
+\subsection{Lecture 5}\label{lecture-5}}
+
+\begin{quote}
+\textbf{Tip}: If allowed, I recommend using R's built-in functions for
+the hypothesis tests. There are less steps, so there is a smaller chance
+of making mistakes.
+\end{quote}
+
+\hypertarget{hypothesis-test-of-a-difference-between-two-means-with-known-sigma}{%
+\subsubsection{\texorpdfstring{Hypothesis test of a difference between
+two means with known
+\(\sigma\)}{Hypothesis test of a difference between two means with known \textbackslash sigma}}\label{hypothesis-test-of-a-difference-between-two-means-with-known-sigma}}
+
+When we wish to test for a difference between two population means when
+both population standard deviations are known, we can use a two sample
+z-test.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  We first need the means of each sample \texttt{mean1} and
+  \texttt{mean2}, population standard deviations \texttt{var1} and
+  \texttt{var2}, and the sample sizes of each group \texttt{n1} and
+  \texttt{n2}.
+\item
+  We then calculate the z-score of the difference in population means
+  \texttt{z=(mean1-mean2)/sqrt(var1/n1+var2/n2)}
+\item
+  We then calculate the p-value based on the side of the test.
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    for two-sided tests where \(H_a: \mu_1 \neq \mu_2\), we use
+    \texttt{p\ =\ 2\ *\ pnorm(-abs(z),\ 0,\ 1)}
+  \item
+    for left-tailed tests where \(H_a: \mu_1 < \mu_2\), we ue
+    \texttt{p\ =\ pnorm(z,\ 0,\ 1)}
+  \item
+    for right-tailed tests where \(H_a: \mu_1 > \mu_2\), we use
+    \texttt{p\ =\ 1\ -\ pnorm(z,\ 0,\ 1)}
+  \end{enumerate}
+\item
+  We then compare our p-value \(p\) with our significance level
+  \(\alpha\) and write a proper conclusion.
+\end{enumerate}
+
+\hypertarget{hypothesis-test-of-a-difference-between-two-means-with-unknown-sigma-and-assumed-equal-variances}{%
+\subsubsection{\texorpdfstring{Hypothesis test of a difference between
+two means with unknown \(\sigma\) and assumed equal
+variances}{Hypothesis test of a difference between two means with unknown \textbackslash sigma and assumed equal variances}}\label{hypothesis-test-of-a-difference-between-two-means-with-unknown-sigma-and-assumed-equal-variances}}
+
+When we wish to test for a difference between two population means when
+we don't know population standard deviations, we can use a two sample
+t-test. In this case, we are assuming that the variances of both
+populations are equal. There are 2 ways we can solve this using R:
+
+\hypertarget{calculating-p-value-step-by-step}{%
+\paragraph{Calculating p-value
+step-by-step:}\label{calculating-p-value-step-by-step}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Identify the mean of both samples \texttt{mean1} and \texttt{mean2},
+  the pooled sample variance \texttt{var}, and the sample size of each
+  group \texttt{n1} and \texttt{n2}.
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \tightlist
+  \item
+    The formula for pooled sample variance can be found on the lecture
+    slides for Week 5.
+  \end{enumerate}
+\item
+  Calculate t-score:
+  \texttt{t\ =\ (mean1\ -\ mean2)\ /\ sqrt(var\ *\ (1\ /\ n1\ +\ 1\ /\ n2))}
+\item
+  Calculate p-value:
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    for two-sided tests where \(H_a: \mu_1 \neq \mu_2\), we use
+    \texttt{p\ =\ 2\ *\ pt(-abs(t),\ n1\ +\ n2\ -\ 2)}
+  \item
+    for left-tailed tests where \(H_a: \mu_1 < \mu_2\), we ue
+    \texttt{p\ =\ pt(t,\ n1\ +\ n2\ -\ 2)}
+  \item
+    for right-tailed tests where \(H_a: \mu_1 > \mu_2\), we use
+    \texttt{p\ =\ 1\ -\ pnorm(t,\ n1\ +\ n2\ -\ 2)}
+  \end{enumerate}
+\item
+  Compare \(p\) with \(\alpha\) and write a proper conclusion.
+\end{enumerate}
+
+\hypertarget{through-r-function-t.test}{%
+\paragraph{Through R function
+t.test():}\label{through-r-function-t.test}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Identify your two samples \texttt{x} and \texttt{y}, the side of the
+  test \texttt{side}, and the confidence level of the test
+  \texttt{1-alpha}
+\item
+  We can now calcualte the p-value using the following R function:
+  \texttt{t.test(x,\ y,\ alternative=c("side"),\ paired=FALSE,\ var.equal=TRUE,\ conf.level=1-alpha)}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    For the side of the test \texttt{side}, use \texttt{"two.sided"} for
+    two-sided tests, \texttt{"less"} for left-tailed tests, and
+    \texttt{"greater"} for right-tailed tests.
+  \item
+    If you do not enter a confidence level for the t-test, R will
+    default to a confidence level of 95\%.
+  \end{enumerate}
+\item
+  Compare \(p\) with \(\alpha\) and write a proper conclusion.
+\end{enumerate}
+
+\hypertarget{hypothesis-test-of-a-difference-between-two-means-with-no-knowledge-of-sigma}{%
+\subsubsection{\texorpdfstring{Hypothesis test of a difference between
+two means with no knowledge of
+\(\sigma\)}{Hypothesis test of a difference between two means with no knowledge of \textbackslash sigma}}\label{hypothesis-test-of-a-difference-between-two-means-with-no-knowledge-of-sigma}}
+
+When we wish to test for a difference between two population means when
+we don't know population standard deviations, we can use a two sample
+t-test. There are 2 ways we can solve this using R:
+
+\hypertarget{calculating-p-value-step-by-step-1}{%
+\paragraph{Calculating p-value
+step-by-step:}\label{calculating-p-value-step-by-step-1}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Identify the mean of both samples \texttt{mean1} and \texttt{mean2},
+  the variance of each group \texttt{var1} and \texttt{var2}, and the
+  sample size of each group \texttt{n1} and \texttt{n2}.
+\item
+  Calculate t-score: \texttt{t\ =\ (mean1-mean2)/sqrt(var1/n1+var2/n2)}
+\item
+  Calculate degrees of freedom
+  \texttt{df\ =\ abs((var1/n1+var2/n2)\^{}2/((var1/n1)\^{}2/(n1-1)+(var2/n2)\^{}2/(n2-1)))}
+\item
+  Calculate p-value:
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    for two-sided tests where \(H_a: \mu_1 \neq \mu_2\), we use
+    \texttt{p\ =\ 2\ *\ pt(-abs(t),\ df)}
+  \item
+    for left-tailed tests where \(H_a: \mu_1 < \mu_2\), we ue
+    \texttt{p\ =\ pt(t,\ df)}
+  \item
+    for right-tailed tests where \(H_a: \mu_1 > \mu_2\), we use
+    \texttt{p\ =\ 1\ -\ pnorm(t,\ df)}
+  \end{enumerate}
+\item
+  Compare \(p\) with \(\alpha\) and write a proper conclusion.
+\end{enumerate}
+
+\hypertarget{through-r-function-t.test-1}{%
+\paragraph{Through R function
+t.test:}\label{through-r-function-t.test-1}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Identify your two samples \texttt{x} and \texttt{y}, the side of the
+  test \texttt{side}, and the confidence level of the test
+  \texttt{1-alpha}
+\item
+  We can now calcualte the p-value using the following R function:
+  \texttt{t.test(x,\ y,\ alternative=c("side"),\ paired=FALSE,\ var.equal=FALSE,\ conf.level=1-alpha)}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    For the side of the test \texttt{side}, use \texttt{"two.sided"} for
+    two-sided tests, \texttt{"less"} for left-tailed tests, and
+    \texttt{"greater"} for right-tailed tests.
+  \item
+    If you do not enter a confidence level for the t-test, R will
+    default to a confidence level of 95\%.
+  \end{enumerate}
+\item
+  Compare \(p\) with \(\alpha\) and write a proper conclusion.
+\end{enumerate}
+
+\hypertarget{hypothesis-testing-on-the-equivalence-on-population-variances}{%
+\subsubsection{Hypothesis testing on the equivalence on population
+variances}\label{hypothesis-testing-on-the-equivalence-on-population-variances}}
+
+When we wish to test if the variances between two populations are equal,
+we can use an F-test
+
+\hypertarget{calculating-p-value-step-by-step-2}{%
+\paragraph{Calculating p-value
+step-by-step:}\label{calculating-p-value-step-by-step-2}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Identify your two sample variances \texttt{var1} and \texttt{var2},
+  and the size of each sample \texttt{n1} and \texttt{n2}.
+\item
+  Calculate \(f\) \texttt{f\ =\ var1\ /\ var2}
+\item
+  Calculate p-value:
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    for two-sided tests where \(H_a: \sigma^2_1 \neq \sigma^2_2\), use
+    \texttt{p\ =\ 2\ *\ pf(f,\ n1\ -\ 1,\ n2\ -\ 1)} \textbf{Please note
+    that this will only work when \(S^2_1 \leq S^2_2\) When
+    \(S^2_1 > S^2_2\), we instead use:}
+    \texttt{p\ =\ 2\ *\ (1\ -\ pf(f,\ n1\ -\ 1,\ n2\ -\ 1))}
+  \item
+    for left-tailed tests where \(H_a: \sigma^2_1 < \sigma^2_2\), use
+    \texttt{p\ =\ pf(f,\ n1\ -\ 1,\ n2\ -\ 1)}
+  \item
+    for right-tailed tests where \(H_a: \sigma^2_1 > \sigma^2_2\),
+    \texttt{p\ =\ 1\ -\ pf(f,\ n1\ -\ 1,\ n2\ -\ 1)}
+  \end{enumerate}
+\item
+  Compare \(p\) and \(\alpha\) and write a proper conclusion
+\end{enumerate}
+
+\hypertarget{through-r-function-var.test}{%
+\paragraph{Through R function
+var.test:}\label{through-r-function-var.test}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Identify your two samples \texttt{x} and \texttt{y}, the side of the
+  test \texttt{side}, and the confidence level \texttt{1\ -\ alpha}
+\item
+  Calculate p-value with the following function:
+  \texttt{var.test(x,\ y,\ ratio\ =\ 1,\ alternative\ =\ c("side"),\ conf.level\ =\ 1\ -\ alpha)}
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    For the side of the test \texttt{side}, use \texttt{"two.sided"} for
+    two-sided tests, \texttt{"less"} for left-tailed tests, and
+    \texttt{"greater"} for right-tailed tests.
+  \item
+    If you do not enter a confidence level for the t-test, R will
+    default to a confidence level of 95\%.
+  \end{enumerate}
+\item
+  Compare \(p\) and \(\alpha\) and write a proper conclusion.
+\end{enumerate}
+
+\hypertarget{comparing-population-proprotions-through-confidence-intervals}{%
+\subsubsection{Comparing population proprotions through confidence
+intervals}\label{comparing-population-proprotions-through-confidence-intervals}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Identify the two sample population proportions \texttt{phat1} and
+  \texttt{phat2}, the sample size of each group \texttt{n1} and
+  \texttt{n2}, and the confidence level \texttt{1\ -\ alpha}
+\item
+  Estimate the standard deviation using the formula
+  \texttt{sd\ =\ sqrt(phat1(1\ -\ phat1)\ /\ n1\ +\ phat2\ (1\ -\ phat2)\ /\ n2)}
+\item
+  Calculate the z-score at \(1 - alpha / 2\) using:
+  \texttt{z\ =\ qnorm(1\ -\ alpha\ /\ 2,\ 0,\ 1)}
+\item
+  Create the confidence interval by doing the following:
+\end{enumerate}
+
+\texttt{lower\ =\ phat1\ -\ phat2\ -\ z\ *\ sd}
+
+\texttt{upper\ =\ phat1\ -\ phat2\ +\ z\ *\ sd}
+
+\texttt{CI\ =\ c(lower,\ upper)}
+
+\hypertarget{hypothesis-test-of-a-difference-between-two-population-proportions}{%
+\subsubsection{Hypothesis test of a difference between two population
+proportions}\label{hypothesis-test-of-a-difference-between-two-population-proportions}}
+
+When conducting a test between two population proportions, we perform a
+z-test.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Identify both sample proportions \texttt{phat1} and \texttt{phat2} and
+  the sample size of each group \texttt{n1} and \texttt{n2}.
+\item
+  Calculate the z-score with the function:
+  \texttt{z\ =\ (phat1\ -\ phat2)\ /\ sqrt(phat1(1\ -\ phat1)\ /\ n1\ +\ phat2(1\ -\ phat2)\ /\ n2)}
+\item
+  Calculate p-value:
+
+  \begin{enumerate}
+  \def\labelenumii{\alph{enumii}.}
+  \item
+    for two-sided tests where \(H_a: \hat{p}_1 \neq \hat{p}_2\), we use
+    \texttt{p\ =\ 2\ *\ pnorm(-abs(z),\ 0,\ 1)}
+  \item
+    for left-tailed tests where \(H_a: \hat{p}_1 < \hat{p}_2\), we ue
+    \texttt{p\ =\ pnorm(z,\ 0,\ 1)}
+  \item
+    for right-tailed tests where \(H_a: \hat{p}_1 > \hat{p}_2\), we use
+    \texttt{p\ =\ 1\ -\ pnorm(z,\ 0,\ 1)}
+  \end{enumerate}
+\item
+  Compare \(p\) and \(\alpha\) and write a proper conclusion.
+\end{enumerate}
