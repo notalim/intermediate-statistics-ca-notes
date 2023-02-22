@@ -160,7 +160,7 @@ If you don't known standard deviation of your population, you can use sample var
 2. Find the sample size of your dataset: `n = length(data)`.
 3. Given confidence level `cf`, your quantile alpha is `alpha = 1 - cf`.
 4. Find the sample standard deviation and sample mean: `sampleSD = sd(data)`.
-5. Then your t-interval is in between bounds 1 and 2, where: `bound1, bound2 = mean(data) ± qt(alpha / 2, n - 1) * sampleSD / sqrt(n)`.
+5. Then your t-interval is in between bounds 1 and 2, where: `bound1, bound2 = mean(data) ∓ qt(alpha / 2, n - 1) * sampleSD / sqrt(n)`.
 6. `tinterval = c(bound1, bound2)`.
 
 > **Tip**: you can reassign a new value to a variable like `bound1`, _R Markdown_ follows the order of commands in which they're typed in.
