@@ -380,7 +380,7 @@ When we wish to test for a difference between two population means when we don't
 When we wish to test if the variances between two populations are equal, we can use an F-test
 
 #### Calculating p-value step-by-step:
-
+**I do not recommend doing it this way.  The R function will generally lead to less mistakes.**
 1. Identify your two sample variances `var1` and `var2`, and the size of each sample `n1` and `n2`.
 2. Calculate $f$ `f = var1 / var2`
 3. Calculate p-value:
@@ -432,3 +432,18 @@ When conducting a test between two population proportions, we perform a z-test.
     c. for right-tailed tests where $H_a: \hat{p}_1 > \hat{p}_2$, we use `p = 1 - pnorm(z, 0, 1)`
 
 4. Compare $p$ and $\alpha$ and write a proper conclusion.
+
+## Lecture 6
+
+### Creating a table
+
+Before creating the table, it may be better to write it out on paper so you can better visualize how it should look.
+
+1. We first create the rows of the table using `row1 = c()`.
+2. We combine the rows into a table using `table = data.frame(row1, row2, row3)`
+
+### Two-way table analysis
+
+We can use a chi-squared test to test for association between the variables in the table.  
+  
+We use the function `chisq.test(table, correct=FALSE)` for a data set `table` and we do not use Yate's correction.  Yate's correction is used when one of the entires in the data set is less than 5.  You shouldn't need to use this correction in this course.
