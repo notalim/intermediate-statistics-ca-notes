@@ -262,7 +262,7 @@ When we want to test for a difference of two population means within the same te
 
     c. If you do not enter a confidence level for the t-test, R will default to a confidence level of 95%.
 
-3. R will calculate the p-value, so now you compare $p$ with $alpha$ and write a proper conclusion.
+3. R will calculate the p-value, so now you compare $p$ with $\alpha$ and write a proper conclusion.
 
 ### Hypothesis test of a population proportion
 
