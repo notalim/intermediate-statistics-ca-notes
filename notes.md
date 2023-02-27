@@ -254,7 +254,7 @@ When we want to test for a difference of two population means within the same te
 > The difference between a paired t-test and unpaired t-test is that a paired t-test involves the same test subjects while the test subjects in an unpaired t-test are unrelated.
 
 1. We first need our two samples `x` and `y`, the side of the test `side`, and the confidence level of the test `1 - alpha`
-2. We can use the R function `t.test(x, y, alternative = c("side"), paired = TRUE, conf.level = 1 - alpha`
+2. We can use the R function `t.test(x, y, alternative = c("side"), paired = TRUE, conf.level = 1 - alpha)`
 
     a. We do not need to enter a mean for the difference between the population means, since under the null hypothesis, we assume there is no difference between the means $H_0: \mu_x - \mu_y = 0$.
 
