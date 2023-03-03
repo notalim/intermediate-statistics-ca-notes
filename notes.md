@@ -385,11 +385,9 @@ When we wish to test if the variances between two populations are equal, we can 
 2. Calculate $f$ `f = var1 / var2`
 3. Calculate p-value:
 
-    a. for two-sided tests where $H_a: \sigma^2_1 \neq \sigma^2_2$, use `p = 2 * pf(f, n1 - 1, n2 - 1)` **Please note that this will only work when $S^2_1 \leq S^2_2$ When $S^2_1 > S^2_2$, we instead use:** `p = 2 * (1 - pf(f, n1 - 1, n2 - 1))`
+    a. for left-tailed tests where $H_a: \sigma^2_1 < \sigma^2_2$, use `p = pf(f, n1 - 1, n2 - 1)`
 
-    b. for left-tailed tests where $H_a: \sigma^2_1 < \sigma^2_2$, use `p = pf(f, n1 - 1, n2 - 1)`
-
-    c. for right-tailed tests where $H_a: \sigma^2_1 > \sigma^2_2$, `p = 1 - pf(f, n1 - 1, n2 - 1)`
+    b. for right-tailed tests where $H_a: \sigma^2_1 > \sigma^2_2$, `p = 1 - pf(f, n1 - 1, n2 - 1)`
 
 4. Compare $p$ and $\alpha$ and write a proper conclusion
 
