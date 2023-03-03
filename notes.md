@@ -360,7 +360,7 @@ When we wish to test for a difference between two population means when we don't
 
     b. for left-tailed tests where $H_a: \mu_1 < \mu_2$, we ue `p = pt(t, df)`
 
-    c. for right-tailed tests where $H_a: \mu_1 > \mu_2$, we use `p = 1 - pnorm(t, df)`
+    c. for right-tailed tests where $H_a: \mu_1 > \mu_2$, we use `p = 1 - pt(t, df)`
 
 5. Compare $p$ with $\alpha$ and write a proper conclusion.
 
