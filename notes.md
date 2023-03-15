@@ -377,7 +377,7 @@ When we wish to test for a difference between two population means when we don't
 
 ### Hypothesis testing on the equivalence on population variances
 
-When we wish to test if the variances between two populations are equal, we can use an F-test
+When we wish to test if the variances between two populations are equal, we can use an $F$-test
 
 #### Calculating p-value step-by-step:
 **I do not recommend doing it this way.  The R function will generally lead to less mistakes.**
@@ -447,3 +447,103 @@ Before creating the table, it may be better to write it out on paper so you can 
 We can use a chi-squared test to test for association between the variables in the table.  
   
 We use the function `chisq.test(table, correct=FALSE)` for a data set `table` and we do not use Yate's correction.  Yate's correction is used when one of the entires in the data set is less than 5.  You shouldn't need to use this correction in this course.
+
+## Lecture 7
+
+### ANOVA
+
+ANOVA (Analysis of Variances) is a very useful technique when it comes to analyzing data-sets separated by a categorical variable. Like for example, boys and girls, adults and children, etc. 
+
+> Usually, ANOVA is used to test the equivalence of population means of your groups. Be careful, because different hypothesis ca apply to different groups, cause each group's $p$-value can be different.
+
+There is a one-way ANOVA test and a regular ANOVA. The first one means that we're testing only one independent variable. In general, one-way ANOVA test is just an $F$-test, where 
+$df_1 = k - 1$ and
+$df_2 = n - k$.
+Regular full ANOVA uses the same method on every group. 
+
+Next, it's important to establish **the ANOVA Table:**
+
+![the ANOVA Table](./img/anova-table.png)
+
+Let's discuss every element in this table one by one:
+
+* $SST$ (Sum of Squares Total) is a sum of squares of differences between all elements in the sample and its mean. 
+* $SSE$/$SSW$ (Sum of Squares of Errors) is sum a of squares of differences between all elements in the sample and its group mean.
+* $SSB$ (Sum of Squares Between) is a sum of squares of the differeces between the sample mean and respective group means for every element in the sample.
+
+> $SST = SSB + SSE$
+
+* $MSB$ (Mean Sum Between) is a average SSB for the respective group. 
+
+> $MSB = \frac{SSB}{k - 1}$
+
+* $MSE$ (Mean Sum of Errors) is a average SSE for the respective group. 
+
+> $MSE = \frac{SSE}{n - k}$
+
+* $f$-statistic is the same one from an $F$-test.
+* $p$-value from the $F$-test:
+
+$p = P_{H_{0}}(F > f) = 1 - pf(f, k - 1, n - k)$
+
+### Coefficient of Determination
+
+Coefficient of Determination is another metric used in ANOVA. A larger coefficient means larger confidence of significant difference between the means.
+
+$R^2 = \frac{SSB}{SST}$
+
+### Doing One-way ANOVA 
+
+Luckily, there exist very useful *R* commands to do ANOVA for us. This is what we would do for a one way test, given a dataset `data`, where the numerical response is `response` and categorical variable is `factor`:
+
+1. `tapply(response, factor, length)` to get the sizes of each category in the dataset.
+2. `tapply(response, factor, mean)` to get the sample means of each category in the dataset.
+3. `tapply(response, factor, var)` to get the sample variances of each category in the dataset.
+
+> Tip: `tapply(..)` is a very useful function you can apply on a whole dataset, it's very similar to `map`.
+
+4. `oneway.test(response ~ factor)` 
+
+> Sometimes you have to specify `data` as a second argument.
+
+But when we do real ANOVA, we have multiple groups to compare to each other. How do we know which groups in the dataset we group together? This is where **contrast** comes into play.
+
+### Contrast
+
+Think of contrast $\psi$ (read as *psi*) as of coefficient of pattern. To establish contrast between groups, we use these two equations:
+
+$\psi = a_1\mu_1 + ... + a_k\mu_k$, , where $a_i$ are coefficients such that $a_1+ ... + a_k = 0$.
+
+If $\psi = 0$, there's no difference between the groups.
+
+Using this formula, we can estimate contrast using sample means, assuming groups are indepedent:
+
+$\psi = a_1\overline{X}_1 + ... + a_k\overline{X}_k$
+
+Similarly, pooled sample variance $S^2_p$ can be estimated through $MSE$. To test our estimations, we can use a $\Tau$-test and $F$-test. 
+
+> I'm not going to go into an example of contrast inference, because it's a regular $\Tau$-test. For a good example, refer to Slides 7.
+
+### Doing full ANOVA
+
+Now that we know contrasts, we can subdivide the groups how we want in our dataset. Given a dataset `data`, where the numerical response is `response` and categorical variable is `factor` (assuming there are 6 categories, indexed from 0):
+
+1. `tapply(response, factor, length)` to get the sizes of each category in the dataset.
+2. Create a vector of patterns we want to test: `pattern = cbind(c(1, 1, -1, -1, -1, 1), 
+c(0, 0, -1, 2, -1, 0))`. In this case, let's assume for the first pattern, groups 2, 3 and 4 are different from groups 0, 1 and 5. For the second pattern, we separate groups 0, 1, 5 and groups 2, 4 from the biggest outlier group 3. 
+
+> Notice how all patterns result in sum of 0.
+
+3. `contrasts(data$factor) <- pattern`.
+4. Store the result of ANOVA: `result = aov(response ~ factor, data)` 
+5. Summarize the result by contrasts: `summary.aov(result, split = list(factor=list("Pattern1" = 1, "Pattern2" = 2)))`
+
+> TODO: Show a result example.
+
+### LSD-test
+
+> TODO
+
+
+
+
