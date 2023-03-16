@@ -223,7 +223,7 @@ The alternative hypothesis can either be **two-tailed** $\mu \neq \mu_0$, **left
 When we wish to conduct a hypothesis test of a population mean when population standard deviation is known, we will use a z-test.
 
 1. First, we must identify the assumed mean of the population `mu`, mean on the sample `xbar`, sample size `n`, and population standard deviation `sd`.
-2. Now we calculate the z-score of the sample using the formula `z = sqrt(n) * (xbar - mu) / sigma`.
+2. Now we calculate the z-score of the sample using the formula `z = sqrt(n) * (xbar - mu) / sd`.
 3. Then we calculate the p-value of the sample based on the z-score.
 
     a. for two-sided tests, we can use `p = 2 * pnorm(- abs(z))`.
@@ -301,7 +301,7 @@ When working with datasets, you will have them imported as tables. To access a c
 
 When we wish to test for a difference between two population means when both population standard deviations are known, we can use a two sample z-test.
 
-1. We first need the means of each sample `mean1` and `mean2`, population standard deviations `var1` and `var2`, and the sample sizes of each group `n1` and `n2`.
+1. We first need the means of each sample `mean1` and `mean2`, population variances `var1` and `var2`, and the sample sizes of each group `n1` and `n2`.
 2. We then calculate the z-score of the difference in population means `z=(mean1-mean2)/sqrt(var1/n1+var2/n2)`
 3. We then calculate the p-value based on the side of the test.
 
@@ -545,5 +545,36 @@ c(0, 0, -1, 2, -1, 0))`. In this case, let's assume for the first pattern, group
 > TODO
 
 
+## Lecture 8
 
+### Simple Linear Regression
 
+Linear Regression is used to to show a linear association between an independent variable $X$ and a dependent variable $Y$.  The linear regression involves finding the least-squares regression line.  This line minimizes the sum of the residuals squared.  Please refer to the lecture slides for the proof.
+
+**Before you test for a linear association, make sure to state your null and alternative hypothesis before the test, and write a proper conclusion afterwards.**
+
+To make a linear regression model using R, we first must indentify our data set `data`, independent variable `x`, and independent variable `y`.  We can then write the following code:
+
+`model = lm(y ~ x, data)`
+
+`summary(model)`
+
+### Residual Plots
+
+Residual plots can be used to see how strong our linear regression model is.  To create the plot in R, we can write:
+
+`plot(x, resid(model))`
+
+`abline(h=0)`
+
+>You can also add labels to the plot within the function `plot()` by using `xlab=`, `ylab=`, `main=`, etc.  You can also edit the line within the function `abline()` with `col=` and `lwd=`.  Feel free to play around with this.
+
+If we see no pattern or outliers, then we know our model is a good fit.  Otherwise, we must rework the model.
+
+### Confidence Interval of a future mean response
+
+>TODO
+
+### Prediction Interval of a future response
+
+>TODO
