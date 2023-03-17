@@ -538,12 +538,21 @@ c(0, 0, -1, 2, -1, 0))`. In this case, let's assume for the first pattern, group
 4. Store the result of ANOVA: `result = aov(response ~ factor, data)` 
 5. Summarize the result by contrasts: `summary.aov(result, split = list(factor=list("Pattern1" = 1, "Pattern2" = 2)))`
 
-> TODO: Show a result example.
+Here's a example from the slides, how the output would look:
+
+![anova-example](/img/anova-example.png)
+
+The significant codes are a way this function interprets the $p$-value. More stars = more significant the findings.
 
 ### LSD-test
 
-> TODO
+Sometimes, we as researchers might now know what do we want to test. Fisher's LSD-test (least significant difference test) helps identify the groups we want to test against each other.
 
+To use LSD-test:
+
+1. Store the result of ANOVA: `result = aov(response ~ factor, data)` 
+2. Compare groups through LSD-test: `comparison = LSD.test(result, "factor", p.adj = "none")`
+3. To identify the groups, look at the bottom of the test (example from the slides): ![lsd-test-example](/img/lsd-test-example.png)
 
 ## Lecture 8
 
