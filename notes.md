@@ -582,8 +582,30 @@ If we see no pattern or outliers, then we know our model is a good fit.  Otherwi
 
 ### Confidence Interval of a future mean response
 
->TODO
+1. We must first gather $\beta_0$ `b0`, $\beta_1$ `b1`, $x^{*}$ `xstar`, significance level `alpha`, sample size `n`, the independent variable `x`, and the dependent variable `y`.
+2. Calculate $t_{1-\frac{\alpha}{2}}(n-2)$ using `t = qt(1-alpha/2, n-2)`
+3. Calculate $SE_{\hat{\mu}_{Y^{*}}}$ using:
+
+`SUM = sum((x - mean(x))^2)`
+
+`vary = (sum((y - mean(y))^2))/(n-2)`
+
+`SE = sqrt(vary * (1/n + ((xstar - mean(x))^2)/SUM))`
+
+4. Create the bounds of the confidence interval with `lbound = b0 + b1 * xstar - t * SE` and `ubound = b0 + b1 * xstar + t * SE`
+5. Create the interval with `ci = c(lbound, ubound)`
 
 ### Prediction Interval of a future response
 
->TODO
+1. We must first gather $\beta_0$ `b0`, $\beta_1$ `b1`, $x^{*}$ `xstar`, significance level `alpha`, sample size `n`, the independent variable `x`, and the dependent variable `y`.
+2. Calculate $t_{1-\frac{\alpha}{2}}(n-2)$ using `t = qt(1-alpha/2, n-2)`
+3. Calculate $SE_{\hat{Y^{*}}}$ using:
+
+`SUM = sum((x - mean(x))^2)`
+
+`vary = (sum((y - mean(y))^2))/(n-2)`
+
+`SEY = sqrt(vary * (1 + 1/n + ((xstar - mean(x))^2)/SUM))`
+
+4. Create the bounds of the confidence interval with `lbound = b0 + b1 * xstar - t * SEY` and `ubound = b0 + b1 * xstar + t * SEY`
+5. Create the interval with `ci = c(lbound, ubound)`
