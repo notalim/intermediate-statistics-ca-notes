@@ -440,13 +440,17 @@ When conducting a test between two population proportions, we perform a z-test.
 Before creating the table, it may be better to write it out on paper so you can better visualize how it should look.
 
 1. We first create the rows of the table using `row1 = c()`.
-2. We combine the rows into a table using `table = data.frame(row1, row2, row3)`
+2. We combine the rows into a table using `table = data.frame(row1, row2, row3)`.
+
+> We can also label the rows and columns of the table using `rownames(table) = c('Label 1', 'Label 2', 'Label 3')` and `colnames(table) = c('Label 1', 'Label 2', 'Label 3')`
 
 ### Two-way table analysis
 
 We can use a chi-squared test to test for association between the variables in the table.  
   
 We use the function `chisq.test(table, correct=FALSE)` for a data set `table` and we do not use Yate's correction.  Yate's correction is used when one of the entires in the data set is less than 5.  You shouldn't need to use this correction in this course.
+
+Make sure to write your null and alternative hypotheses before the test.  After doing the test, make sure to compare p-value with the significance level and write a proper conclusion.
 
 ## Lecture 7
 
