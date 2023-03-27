@@ -425,11 +425,11 @@ When conducting a test between two population proportions, we perform a z-test.
 2. Calculate the z-score with the function: `z = (phat1 - phat2) / sqrt(phat1(1 - phat1) / n1 + phat2(1 - phat2) / n2)`
 3. Calculate p-value:
 
-    a. for two-sided tests where $H_a: \hat{p}_1 \neq \hat{p}_2$, we use `p = 2 * pnorm(-abs(z), 0, 1)`
+    a. for two-sided tests where $H_a: p_1 \neq p_2$, we use `p = 2 * pnorm(-abs(z), 0, 1)`
 
-    b. for left-tailed tests where $H_a: \hat{p}_1 < \hat{p}_2$, we ue `p = pnorm(z, 0, 1)`
+    b. for left-tailed tests where $H_a: p_1 < p_2$, we ue `p = pnorm(z, 0, 1)`
 
-    c. for right-tailed tests where $H_a: \hat{p}_1 > \hat{p}_2$, we use `p = 1 - pnorm(z, 0, 1)`
+    c. for right-tailed tests where $H_a: p_1 > p_2$, we use `p = 1 - pnorm(z, 0, 1)`
 
 4. Compare $p$ and $\alpha$ and write a proper conclusion.
 
