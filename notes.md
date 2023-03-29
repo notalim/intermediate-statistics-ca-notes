@@ -439,8 +439,8 @@ When conducting a test between two population proportions, we perform a z-test.
 
 Before creating the table, it may be better to write it out on paper so you can better visualize how it should look.
 
-1. We first create the rows of the table using `row1 = c()`.
-2. We combine the rows into a table using `table = data.frame(row1, row2, row3)`.
+1. We first create the columns of the table using `col1 = c()`.
+2. We combine the columns into a table using `table = data.frame(col1, col2, col3)`.
 
 > We can also label the rows and columns of the table using `rownames(table) = c('Label 1', 'Label 2', 'Label 3')` and `colnames(table) = c('Label 1', 'Label 2', 'Label 3')`
 
