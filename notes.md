@@ -1,6 +1,6 @@
 # Intermediate Statistics CA RStudio Notes
 
-> **Welcome to MA 331 Spring 2023!**
+> **Welcome to MA 331!**
 
 > These notes are meant to help you succeed in this course. These will include necessary tips for _R_ formulas you will need throughout this course. Feel free to give feedback on these via our emails: akassymo@stevens.edu, aleather@stevens.edu.
 
