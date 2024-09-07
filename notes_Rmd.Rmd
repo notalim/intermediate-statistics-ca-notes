@@ -14,11 +14,33 @@ do not contact these graduates ([akassymo\@stevens.edu](mailto:akassymo@stevens.
 
 > **These notes are not meant to replace the slides.** For more info, please refer to the slides.
 
-**I highly suggest installing *R Markdown*!** It will make your life so much easier. [Here's a great guide how to install *R Markdown*.](https://alexd106.github.io/intro2R/install_rmarkdown.html)
-
+## Installation of R Studio (and R Markdown)
 To install RStudio, head to <https://posit.co/download/rstudio-desktop/> and follow the instructions on the page. You can also install it with your package manager of choice.
 
-Alternatively, you can sign up for a free account on [Posit Cloud](https://posit.cloud) and get up to 25 hours of compute a month, which should be enough for this course.
+Alternatively, you can sign up for a free account on Posit Cloud (<https://posit.cloud/>) and get up to 25 hours of compute a month, which should be enough for this course.
+
+**We highly suggest installing *R Markdown*!** It will make your life so much easier. Once you've downloaded RStudio, follow this great guide to find out how to install R Markdown:
+<https://alexd106.github.io/intro2R/install_rmarkdown.html/>
+
+You can use *this* very document to learn about how notation gets rendered. Check out the .Rmd file of this pdf.
+
+In general, R Markdown is basically equivalent to regular Markdown (<https://www.markdownguide.org/>). However, the key differences are that you can add inline and blocks of LaTeX code for symbolic notation, and most importantly, write code blocks like the one seen under section Lecture 1.
+
+The output of these code blocks will be present in the rendered document unless you have set the right options inside the curly braces. Check out the Cookbook page 11.7 "Hide code, text output, messages, or plots"
+
+```{r, echo=FALSE, results=FALSE}
+# you found me
+print("you found me")
+# notice how the code and the output of this code block is missing from the pdf
+```
+
+# Helpful Resources
+
+The R Markdown Cookbook (<https://bookdown.org/yihui/rmarkdown-cookbook/>) is a great resource I used when taking this course. I didn't end up using too many of the formatting options, but feel free to make your work look as nice as you want.
+
+> **Tip**: If you want to keep all your code and data in the same place, remember to click "Session > Set Working Directory > To Source File Location". This allows you to access files in the folder that your code file is in. So, loading data will only require a short relative path and not the full path.
+
+\newpage
 
 ## Lecture 1
 
@@ -28,6 +50,8 @@ To separate code blocks from text in RMarkdown, you need to type:
 
 ```{r}
 # *code here*
+x = 42
+print(x)
 ```
 
 You have to close the code block if you want to have normal text after.
