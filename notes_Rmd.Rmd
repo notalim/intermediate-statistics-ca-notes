@@ -49,7 +49,11 @@ R formulas are **very** similar to Python. If you ever used *pandas* or *scipy*,
 To separate code blocks from text in RMarkdown, you need to type:
 
 ```{r}
-# *code here*
+# this is how a code block should look, just remove the first # on each line.
+# ```{r}
+# # *code here*
+# ```
+
 x = 42
 print(x)
 ```
