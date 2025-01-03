@@ -8,9 +8,7 @@ output: pdf_document
 > **Welcome to MA 331!**
 
 > These notes are meant to help you succeed in this course. These will include necessary tips for *R* formulas you will need throughout this course. Feel free to give feedback on these via our emails: [dliu4\@stevens.edu](mailto:dliu4@stevens.edu){.email},
-[bchan4\@stevens.edu](mailto:bchan4@stevens.edu){.email},
-do not contact these graduates ([akassymo\@stevens.edu](mailto:akassymo@stevens.edu){.email},'
-[aleather\@stevens.edu](mailto:aleather@stevens.edu){.email}).
+[bchan4\@stevens.edu](mailto:bchan4@stevens.edu){.email}
 
 > **These notes are not meant to replace the slides.** For more info, please refer to the slides.
 
